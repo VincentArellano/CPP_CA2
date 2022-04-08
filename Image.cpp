@@ -11,7 +11,6 @@
 
 bool Image::load(string filename)
 {
-
     std::ifstream ifs;
     ifs.open(filename, std::ios::binary);
     // need to spec. binary mode for Windows users
@@ -42,16 +41,13 @@ bool Image::load(string filename)
         ifs.close();
         return false;
     }
-
     return true;
-
 }
 bool Image::loadRaw(string filename)
 {
     std::ifstream ifs;
     ifs.open(filename, std::ios::binary);
     // need to spec. binary mode for Windows users
-
     try {
         if (ifs.fail()) {
             throw("Can't open input file");
@@ -79,7 +75,6 @@ bool Image::loadRaw(string filename)
         ifs.close();
         return false;
     }
-
     return true;
 }
 bool Image::savePPM(string filename)
@@ -87,7 +82,6 @@ bool Image::savePPM(string filename)
     std::ofstream ofs;
     ofs.open(filename, std::ios::binary);
     // need to spec. binary mode for Windows users
-
     try {
         if (ofs.fail()) {
             throw("Can't open output file");
@@ -107,7 +101,6 @@ bool Image::savePPM(string filename)
         ofs.close();
         return false;
     }
-
     return true;
 }
 
