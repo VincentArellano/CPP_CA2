@@ -139,12 +139,36 @@ void Image::greyScale()
 }
 void Image::flipHorizontal()
 {
-
+    for (int i = 0; i < h; ++i) {
+        for(int j = 0; j < w/2; ++j) {
+            int temp = pixels[i * w + j].r;
+            pixels[i * w + j].r = pixels[i * w + w - j - 1].r;
+            pixels[i * w + w - j - 1].r = temp;
+            temp = pixels[i * w + j].g;
+            pixels[i * w + j].g = pixels[i * w + w - j - 1].g;
+            pixels[i * w + w - j - 1].g = temp;
+            temp = pixels[i * w + j].b;
+            pixels[i * w + j].b = pixels[i * w + w - j - 1].b;
+            pixels[i * w + w - j - 1].b = temp;
+        }
+    }
 
 }
 void Image::flipVertically()
 {
-
+    for(int j = 0; j < w; ++j) {
+        for(int i = 0; i < h/2; ++i) {
+            int temp = pixels[i * w + j].r;
+            pixels[i * w + j].r = pixels[(h - i - 1) * w + j].r;
+            pixels[(h - i - 1) * w + j].r = temp;
+            temp = pixels[i * w + j].g;
+            pixels[i * w + j].g = pixels[(h - i - 1) * w + j].g;
+            pixels[(h - i - 1) * w + j].g = temp;
+            temp = pixels[i * w + j].b;
+            pixels[i * w + j].b = pixels[(h - i - 1) * w + j].b;
+            pixels[(h - i - 1) * w + j].b = temp;
+        }
+    }
 
 }
 void Image::AdditionalFunction2()
