@@ -135,7 +135,11 @@ void Image::filterBlue()
 }
 void Image::greyScale()
 {
-
+    for (int i = 0; i < w * h; ++i) {
+        pixels[i].r = (pixels[i].r + pixels[i].g + pixels[i].b) / 3;
+        pixels[i].g = (pixels[i].r + pixels[i].g + pixels[i].b) / 3;
+        pixels[i].b = (pixels[i].r + pixels[i].g + pixels[i].b) / 3;
+    }
 }
 void Image::flipHorizontal()
 {
