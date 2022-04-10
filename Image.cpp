@@ -55,7 +55,7 @@ bool Image::loadRaw(string filename)
         std::string header;
         int w, h, b;
         ifs >> header;
-        if (strcmp(header.c_str(), "P6") != 0) throw("Can't read input file");
+        if (strcmp(header.c_str(), "240 160") != 0) throw("Can't read input file");
         ifs >> w >> h >> b;
         this->w = w;
         this->h = h;
