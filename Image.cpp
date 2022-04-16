@@ -140,15 +140,53 @@ void Image::flipVertically()
 }
 void Image::AdditionalFunction2()
 {
-
+    //inverted colours
+    for (int i = 0; i < w * h; ++i) {
+        pixels[i].r = 255 - pixels[i].r;
+        pixels[i].g = 255 - pixels[i].g;
+        pixels[i].b = 255 - pixels[i].b;
+    }
 }
 void Image::AdditionalFunction3()
 {
-
+    //gaussian blur
+    for(int i = 0; i < h; ++i)
+    {
+        for(int f = 0; f < w; ++f)
+        {
+            int red = 0;
+            int green = 0;
+            int blue = 0;
+            for(int a = -1; a <= 1; ++a)
+            {
+                for(int b = -1; b <= 1; ++b)
+                {
+                    if(i + a >= 0 && i + a < h && f + b >= 0 && f + b < w)
+                    {
+                        red += pixels[(i + a) * w + (f + b)].r;
+                        green += pixels[(i + a) * w + (f + b)].g;
+                        blue += pixels[(i + a) * w + (f + b)].b;
+                    }
+                }
+            }
+            pixels[i * w + f].r = red / 10;
+            pixels[i * w + f].g = green / 10;
+            pixels[i * w + f].b = blue / 10;
+        }
+    }
 }
 void Image::AdditionalFunction1()
 {
+    //darken the image
+    for(int i = 0; i< w * h; i++)
+    {
+        this->pixels[i].b = (this->pixels[i].b + this->pixels[i].b) /5;
+        this->pixels[i].g =(this->pixels[i].g + this->pixels[i].g) /5;
+        this->pixels[i].r = (this->pixels[i].r +this->pixels[i].r) /5;
+    }
+}
 
+void Image::gammaEncoding() {
 }
 
 /* Functions used by the GUI - DO NOT MODIFY */
