@@ -170,13 +170,24 @@ void Image::AdditionalFunction1()
     }
 }
 
+void Image::GammaEncoding() {
+    for(int i = 0; i< w*h; i++)
+    {
+        float gamma = 1 / 2.5;
+
+        pixels[i].r = pow(pixels[i].r / 255.0f, gamma) * 255;
+        pixels[i].g = pow(pixels[i].g / 255.0f, gamma) * 255;
+        pixels[i].b = pow(pixels[i].b / 255.0f, gamma) * 255;
+    }
+}
+
 void Image::OtherAdvancedFeature() {
-//gaussian blur
+    //gaussian blur
     for(int i = 0; i < h; ++i)
     {
         for(int f = 0; f < w; ++f)
         {
-            double redTotal = 0.0, blueTotal = 0.0, greenTotal = 0.0;
+            float redTotal = 0.0, blueTotal = 0.0, greenTotal = 0.0;
             for(int a = -1; a <= 1; ++a)
             {
                 for(int b = -1; b <= 1; ++b)

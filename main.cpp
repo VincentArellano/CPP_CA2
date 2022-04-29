@@ -56,8 +56,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance,
     AppendMenuW(Alter, MF_STRING, IDM_EDIT_AD2, L"&Additional Function 2"); // Copy this line to add
     AppendMenuW(Alter, MF_STRING, IDM_EDIT_AD3, L"&Additional Function 3"); // Copy this line to add
      // Copy this line to add
-    AppendMenuW(Alter, MF_STRING, IDM_EDIT_GE, L"&Gamma encoding"); // Copy this line to add
-    AppendMenuW(Alter, MF_STRING, IDM_EDIT_OAF, L"&Other Advanced feature"); // Copy this line to add
+    AppendMenuW(Alter, MF_STRING, IDM_EDIT_GE, L"&Gamma Encoding"); // Copy this line to add
+    AppendMenuW(Alter, MF_STRING, IDM_EDIT_OAF, L"&Other Advanced Feature"); // Copy this line to add
 
 
 
