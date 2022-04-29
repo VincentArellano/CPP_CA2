@@ -5,6 +5,7 @@
 #include <fstream>
 #include <iomanip>
 #include <cstring>
+#include <valarray>
 #include "Image.h"
 
 
@@ -141,7 +142,8 @@ void Image::flipVertically()
 void Image::AdditionalFunction2()
 {
     //inverted colours
-    for (int i = 0; i < w * h; ++i) {
+    for (int i = 0; i < w*h; ++i)
+    {
         pixels[i].r = 255 - pixels[i].r;
         pixels[i].g = 255 - pixels[i].g;
         pixels[i].b = 255 - pixels[i].b;
@@ -149,30 +151,12 @@ void Image::AdditionalFunction2()
 }
 void Image::AdditionalFunction3()
 {
-    //gaussian blur
-    for(int i = 0; i < h; ++i)
+    //image contrast
+    for(int i = 0; i< w*h; i++)
     {
-        for(int f = 0; f < w; ++f)
-        {
-            int red = 0;
-            int green = 0;
-            int blue = 0;
-            for(int a = -1; a <= 1; ++a)
-            {
-                for(int b = -1; b <= 1; ++b)
-                {
-                    if(i + a >= 0 && i + a < h && f + b >= 0 && f + b < w)
-                    {
-                        red += pixels[(i + a) * w + (f + b)].r;
-                        green += pixels[(i + a) * w + (f + b)].g;
-                        blue += pixels[(i + a) * w + (f + b)].b;
-                    }
-                }
-            }
-            pixels[i * w + f].r = red / 10;
-            pixels[i * w + f].g = green / 10;
-            pixels[i * w + f].b = blue / 10;
-        }
+        this->pixels[i].b = this->pixels[i].b/-127.5;
+        this->pixels[i].g = this->pixels[i].g/-127.5;
+        this->pixels[i].r = this->pixels[i].r/-127.5;
     }
 }
 void Image::AdditionalFunction1()
@@ -180,13 +164,36 @@ void Image::AdditionalFunction1()
     //darken the image
     for(int i = 0; i< w * h; i++)
     {
-        this->pixels[i].b = (this->pixels[i].b + this->pixels[i].b) /5;
-        this->pixels[i].g =(this->pixels[i].g + this->pixels[i].g) /5;
-        this->pixels[i].r = (this->pixels[i].r +this->pixels[i].r) /5;
+        this->pixels[i].b = this->pixels[i].b/2.5;
+        this->pixels[i].g =this->pixels[i].g/2.5;
+        this->pixels[i].r = this->pixels[i].r/2.5;
     }
 }
 
-void Image::gammaEncoding() {
+void Image::OtherAdvancedFeature() {
+//gaussian blur
+    for(int i = 0; i < h; ++i)
+    {
+        for(int f = 0; f < w; ++f)
+        {
+            double redTotal = 0.0, blueTotal = 0.0, greenTotal = 0.0;
+            for(int a = -1; a <= 1; ++a)
+            {
+                for(int b = -1; b <= 1; ++b)
+                {
+                    if(i + a >= 0 && i + a < h && f + b >= 0 && f + b < w)
+                    {
+                        redTotal += pixels[(i + a) * w + (f + b)].r;
+                        greenTotal += pixels[(i + a) * w + (f + b)].g;
+                        blueTotal += pixels[(i + a) * w + (f + b)].b;
+                    }
+                }
+            }
+            pixels[i * w + f].r = redTotal / 10;
+            pixels[i * w + f].g = greenTotal / 10;
+            pixels[i * w + f].b = blueTotal / 10;
+        }
+    }
 }
 
 /* Functions used by the GUI - DO NOT MODIFY */
