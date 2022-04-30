@@ -154,9 +154,9 @@ void Image::AdditionalFunction3()
     //image contrast
     for(int i = 0; i< w*h; i++)
     {
-        this->pixels[i].b = this->pixels[i].b/-127.5;
-        this->pixels[i].g = this->pixels[i].g/-127.5;
         this->pixels[i].r = this->pixels[i].r/-127.5;
+        this->pixels[i].g = this->pixels[i].g/-127.5;
+        this->pixels[i].b = this->pixels[i].b/-127.5;
     }
 }
 void Image::AdditionalFunction1()
@@ -164,9 +164,9 @@ void Image::AdditionalFunction1()
     //darken the image
     for(int i = 0; i< w * h; i++)
     {
-        this->pixels[i].b = this->pixels[i].b/2.5;
-        this->pixels[i].g =this->pixels[i].g/2.5;
         this->pixels[i].r = this->pixels[i].r/2.5;
+        this->pixels[i].g =this->pixels[i].g/2.5;
+        this->pixels[i].b = this->pixels[i].b/2.5;
     }
 }
 
